@@ -1,0 +1,141 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#070b1a;
+    color:white;
+}
+
+.container{
+    display:flex;
+    min-height:100vh;
+}
+
+.sidebar{
+    width:260px;
+    background:#111827;
+    padding:30px 20px;
+}
+
+.logo{
+    font-size:24px;
+    font-weight:700;
+    margin-bottom:45px;
+}
+
+.logo i{
+    color:#6c63ff;
+    margin-right:10px;
+}
+
+.sidebar ul{
+    list-style:none;
+}
+
+.sidebar ul li{
+    margin:16px 0;
+    border-radius:12px;
+}
+
+.sidebar ul li a{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:14px;
+    color:white;
+    text-decoration:none;
+}
+
+.sidebar ul li.active{
+    background:linear-gradient(90deg,#6c63ff,#00c6ff);
+}
+
+.main-content{
+    flex:1;
+    padding:45px;
+}
+
+.chat-container{
+    height:88vh;
+    background:#111936;
+    border-radius:22px;
+    display:flex;
+    flex-direction:column;
+    overflow:hidden;
+    box-shadow:0 15px 40px rgba(0,0,0,.35);
+}
+
+.chat-header{
+    padding:25px;
+    background:linear-gradient(90deg,#6c63ff,#00c6ff);
+    display:flex;
+    gap:18px;
+    align-items:center;
+}
+
+.chat-header i{
+    font-size:38px;
+}
+
+.chat-box{
+    flex:1;
+    padding:25px;
+    overflow-y:auto;
+}
+
+.bot-message,
+.user-message{
+    max-width:75%;
+    padding:16px 20px;
+    border-radius:18px;
+    margin-bottom:18px;
+    line-height:1.6;
+    font-size:15px;
+}
+
+.bot-message{
+    background:#1f2937;
+    color:#e5e7eb;
+}
+
+.user-message{
+    background:linear-gradient(90deg,#6c63ff,#00c6ff);
+    margin-left:auto;
+}
+
+.chat-input{
+    padding:20px;
+    display:flex;
+    gap:15px;
+    background:#0f172a;
+}
+
+.chat-input input{
+    flex:1;
+    padding:16px;
+    border:none;
+    border-radius:14px;
+    outline:none;
+    background:#1f2937;
+    color:white;
+    font-size:15px;
+}
+
+.chat-input button{
+    width:58px;
+    border:none;
+    border-radius:14px;
+    background:linear-gradient(90deg,#6c63ff,#00c6ff);
+    color:white;
+    cursor:pointer;
+    font-size:20px;
+}
+
+.typing{
+    color:#9ca3af;
+    font-style:italic;
+}

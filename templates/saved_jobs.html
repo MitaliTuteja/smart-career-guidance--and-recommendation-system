@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Saved Jobs | CareerGuide AI</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/common.css') }}">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/saved_jobs.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="sidebar">
+        <div class="logo">🧠 CareerGuide AI</div>
+
+        <ul>
+            <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+            <li><a href="{{ url_for('career') }}">Career Match</a></li>
+            <li><a href="{{ url_for('skill_analysis') }}">Skill Analysis</a></li>
+            <li><a href="{{ url_for('learning_roadmap') }}">Learning Roadmap</a></li>
+            <li><a href="{{ url_for('resume_analyzer') }}">Resume Analyzer</a></li>
+            <li><a href="{{ url_for('jobs') }}">Jobs</a><i class="fas fa-briefcase"></i></li>
+            <li class="active"><a href="{{ url_for('saved_jobs') }}">Saved Jobs</a></li>
+            <li><i class="fas fa-bookmark"></i><a href="{{ url_for('saved_careers') }}">Saved Careers</a></li>
+            <li>
+               <a href="{{ url_for('ai_assistant') }}">
+                    <i class="fas fa-robot"></i> AI Assistant
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <h1>Saved Jobs</h1>
+        <p>Your bookmarked job recommendations are shown here.</p>
+
+        <div id="savedJobsBox" class="saved-grid"></div>
+    </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/saved_jobs.js') }}"></script>
+
+</body>
+</html>

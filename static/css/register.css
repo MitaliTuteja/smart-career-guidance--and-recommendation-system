@@ -1,0 +1,121 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#070b1a;
+    color:white;
+}
+
+.auth-container{
+    display:flex;
+    min-height:100vh;
+}
+
+.left-panel{
+    width:55%;
+    padding:120px 70px;
+    background:linear-gradient(135deg,#0b1020,#071326);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.logo{
+    font-size:26px;
+    font-weight:700;
+    margin-bottom:60px;
+}
+
+.logo i{
+    color:#6c63ff;
+    margin-right:10px;
+}
+
+.left-panel h1{
+    font-size:52px;
+    margin-bottom:20px;
+}
+
+.left-panel p{
+    font-size:20px;
+    color:#cbd5e1;
+    max-width:520px;
+}
+
+.right-panel{
+    width:45%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#070b1a;
+}
+
+.form-box{
+    width:420px;
+    background:#111827;
+    padding:40px;
+    border-radius:20px;
+    box-shadow:0 0 25px rgba(0,0,0,0.3);
+}
+
+.form-box h2{
+    text-align:center;
+    margin-bottom:30px;
+    font-size:30px;
+}
+
+label{
+    display:block;
+    margin:15px 0 8px;
+    font-weight:500;
+}
+
+input{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:10px;
+    background:#172033;
+    color:white;
+    font-size:15px;
+}
+
+.password-box{
+    position:relative;
+}
+
+.password-box i{
+    position:absolute;
+    right:15px;
+    top:50%;
+    transform:translateY(-50%);
+    cursor:pointer;
+    color:#9ca3af;
+}
+
+button{
+    width:100%;
+    margin-top:25px;
+    padding:15px;
+    border:none;
+    border-radius:10px;
+    background:linear-gradient(90deg,#6c63ff,#00c6ff);
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+}
+
+.switch-text{
+    text-align:center;
+    margin-top:25px;
+    color:#cbd5e1;
+}
+
+.switch-text a{
+    color:#00c6ff;
+    text-decoration:none;
+}

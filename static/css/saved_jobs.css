@@ -1,0 +1,161 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#070b1a;
+    color:#fff;
+}
+
+.container{
+    display:flex;
+    min-height:100vh;
+}
+
+/* Sidebar */
+
+.sidebar{
+    width:260px;
+    background:#111827;
+    padding:30px 20px;
+}
+
+.logo{
+    font-size:24px;
+    font-weight:700;
+    margin-bottom:45px;
+}
+
+.sidebar ul{
+    list-style:none;
+}
+
+.sidebar ul li{
+    margin:16px 0;
+    border-radius:12px;
+}
+
+.sidebar ul li a{
+    display:block;
+    padding:14px;
+    color:#fff;
+    text-decoration:none;
+}
+
+.sidebar ul li.active{
+    background:linear-gradient(90deg,#6C63FF,#00C6FF);
+}
+
+/* Main */
+
+.main-content{
+    flex:1;
+    padding:50px;
+}
+
+.main-content h1{
+    font-size:42px;
+    margin-bottom:10px;
+}
+
+.main-content p{
+    color:#b6bfd1;
+    margin-bottom:35px;
+}
+
+/* Cards */
+
+.saved-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(360px,1fr));
+    gap:25px;
+}
+
+.saved-card{
+    background:#111936;
+    border-radius:18px;
+    padding:25px;
+    box-shadow:0 10px 25px rgba(0,0,0,.25);
+    transition:.3s;
+}
+
+.saved-card:hover{
+    transform:translateY(-6px);
+}
+
+.saved-card h2{
+    font-size:24px;
+    margin-bottom:8px;
+}
+
+.company{
+    color:#00C6FF;
+    font-weight:600;
+    margin-bottom:15px;
+}
+
+.job-info{
+    display:flex;
+    justify-content:space-between;
+    color:#cfd5e6;
+    margin-bottom:15px;
+}
+
+.match{
+    display:inline-block;
+    background:#00c85322;
+    color:#00C853;
+    padding:8px 16px;
+    border-radius:30px;
+    font-weight:600;
+    margin-bottom:18px;
+}
+
+.button-group{
+    display:flex;
+    gap:12px;
+    margin-top:20px;
+}
+
+.open-btn,
+.remove-btn{
+    flex:1;
+    border:none;
+    padding:12px;
+    border-radius:10px;
+    cursor:pointer;
+    color:white;
+    font-weight:600;
+}
+
+.open-btn{
+    background:#6C63FF;
+}
+
+.remove-btn{
+    background:#ff4d4f;
+}
+
+.open-btn:hover{
+    background:#584de5;
+}
+
+.remove-btn:hover{
+    background:#e23c3f;
+}
+
+.empty-box{
+    text-align:center;
+    padding:80px;
+    background:#111936;
+    border-radius:20px;
+    color:#9aa4b8;
+}
+
+.empty-box h2{
+    margin-bottom:10px;
+    color:white;
+}

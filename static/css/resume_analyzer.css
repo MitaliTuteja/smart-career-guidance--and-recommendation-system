@@ -1,0 +1,342 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#070b1a;
+    color:white;
+}
+
+.container{
+    display:flex;
+    min-height:100vh;
+}
+
+.sidebar{
+    width:260px;
+    background:#111827;
+    padding:30px 20px;
+}
+
+.logo{
+    font-size:26px;
+    font-weight:700;
+    margin-bottom:50px;
+}
+
+.logo i{
+    color:#6c63ff;
+    margin-right:10px;
+}
+
+.sidebar ul{
+    list-style:none;
+}
+
+.sidebar ul li{
+    margin:16px 0;
+    border-radius:10px;
+}
+
+.sidebar ul li a{
+    display:flex;
+    gap:12px;
+    align-items:center;
+    padding:15px;
+    color:white;
+    text-decoration:none;
+}
+
+.sidebar ul li.active{
+    background:linear-gradient(90deg,#6c63ff,#00c6ff);
+}
+
+.main-content{
+    flex:1;
+    padding:55px;
+}
+
+.main-content h1{
+    font-size:48px;
+}
+
+.main-content > p{
+    color:#9ca3af;
+    font-size:20px;
+    margin:10px 0 35px;
+}
+
+.upload-card,
+.result-card{
+    background:#111936;
+    padding:35px;
+    border-radius:22px;
+    margin-bottom:30px;
+}
+
+.upload-card h2{
+    font-size:30px;
+}
+
+.upload-card p{
+    color:#9ca3af;
+    margin:12px 0 25px;
+}
+
+#resumeForm{
+    display:flex;
+    align-items:center;
+    gap:30px;
+}
+
+button{
+    padding:15px 35px;
+    border:none;
+    border-radius:12px;
+    background:linear-gradient(90deg,#6c63ff,#00c6ff);
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+}
+
+.stats-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:25px;
+    margin-bottom:30px;
+}
+
+.stat-card{
+    background:#111936;
+    padding:30px;
+    border-radius:20px;
+    text-align:center;
+}
+
+.stat-card h2{
+    color:#00c6ff;
+    font-size:36px;
+}
+
+.resume-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:25px;
+}
+
+.tag-box span{
+    display:inline-block;
+    background:#1e293b;
+    padding:12px 18px;
+    border-radius:10px;
+    margin:8px;
+}
+
+.recommend-list{
+    margin-left:25px;
+    line-height:2;
+    font-size:18px;
+}
+
+.career-path-card{
+    background:#111936;
+    text-align:center;
+    padding:35px;
+    border-radius:22px;
+    margin-top:30px;
+}
+
+.career-path-card h1{
+    color:#00c6ff;
+    margin:15px 0;
+}
+
+.resume-badge{
+    display:inline-block;
+    margin:5px 0 30px;
+    padding:10px 18px;
+    background:rgba(0,198,255,0.12);
+    border:1px solid rgba(0,198,255,0.35);
+    color:#00c6ff;
+    border-radius:25px;
+    font-weight:600;
+}
+
+.upload-status{
+    margin-top:18px;
+}
+
+.upload-success{
+
+    display:inline-block;
+
+    background:#182240;
+
+    padding:14px 18px;
+
+    border-left:4px solid #00d26a;
+
+    border-radius:10px;
+
+    color:white;
+
+    line-height:1.8;
+
+    font-size:15px;
+
+}
+
+.upload-success strong{
+
+    color:#ffffff;
+
+    font-size:16px;
+
+}
+
+.upload-success span{
+
+    color:#00d26a;
+
+    font-weight:600;
+
+}
+
+.spinner{
+    display:inline-block;
+    width:16px;
+    height:16px;
+    border:3px solid rgba(255,255,255,0.4);
+    border-top:3px solid white;
+    border-radius:50%;
+    margin-right:8px;
+    vertical-align:middle;
+    animation:spin 0.8s linear infinite;
+}
+
+@keyframes spin{
+    from{ transform:rotate(0deg); }
+    to{ transform:rotate(360deg); }
+}
+
+button:disabled{
+    opacity:0.8;
+    cursor:not-allowed;
+}
+
+/* ATS Score Colors */
+
+.ats-badge{
+
+    display:inline-block;
+
+    margin-top:10px;
+
+    padding:8px 18px;
+
+    border-radius:30px;
+
+    font-size:14px;
+
+    font-weight:600;
+
+    color:#fff;
+
+}
+
+.ats-green{
+
+    color:#1ED760 !important;
+
+}
+
+.ats-green.ats-badge{
+
+    background:#1ED76022;
+
+    border:1px solid #1ED760;
+
+}
+
+.ats-blue{
+
+    color:#00C8FF !important;
+
+}
+
+.ats-blue.ats-badge{
+
+    background:#00C8FF22;
+
+    border:1px solid #00C8FF;
+
+}
+
+.ats-orange{
+
+    color:#FFB020 !important;
+
+}
+
+.ats-orange.ats-badge{
+
+    background:#FFB02022;
+
+    border:1px solid #FFB020;
+
+}
+
+.ats-red{
+
+    color:#FF4D4F !important;
+
+}
+
+.ats-red.ats-badge{
+
+    background:#FF4D4F22;
+
+    border:1px solid #FF4D4F;
+
+}
+
+.priority-box{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+}
+
+.priority-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:#1e293b;
+    padding:14px 18px;
+    border-radius:12px;
+}
+
+.priority-row span{
+    font-weight:600;
+}
+
+.priority-row small{
+    padding:6px 12px;
+    border-radius:20px;
+    font-size:12px;
+    font-weight:700;
+}
+
+.high-priority{
+    color:#ff4d4f;
+    background:rgba(255,77,79,0.14);
+    border:1px solid #ff4d4f;
+}
+
+.medium-priority{
+    color:#ffb020;
+    background:rgba(255,176,32,0.14);
+    border:1px solid #ffb020;
+}

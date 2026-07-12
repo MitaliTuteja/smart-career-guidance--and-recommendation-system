@@ -1,0 +1,140 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#070b1a;
+    color:white;
+}
+
+.container{
+    display:flex;
+    min-height:100vh;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+    width:260px;
+    height:100vh;
+    position:fixed;
+    left:0;
+    top:0;
+    background:#111827;
+    padding:30px 20px;
+    overflow-y:auto;
+    scrollbar-width:none;
+}
+
+.sidebar::-webkit-scrollbar{
+    display:none;
+}
+
+.logo{
+    font-size:24px;
+    font-weight:700;
+    margin-bottom:42px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.logo i{
+    color:#6c63ff;
+}
+
+.sidebar ul{
+    list-style:none;
+}
+
+.sidebar ul li{
+    margin:12px 0;
+    border-radius:12px;
+}
+
+.sidebar ul li a,
+.sidebar ul li{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:14px;
+    color:white;
+    text-decoration:none;
+    font-size:16px;
+}
+
+.sidebar ul li.active{
+    background:linear-gradient(90deg,#6c63ff,#00c6ff);
+}
+
+.sidebar ul li:hover{
+    background:#1f2937;
+}
+
+/* MAIN */
+
+.main-content{
+    margin-left:260px;
+    flex:1;
+    padding:45px;
+}
+
+/* BUTTONS */
+
+button,
+.primary-btn{
+    border:none;
+    border-radius:12px;
+    padding:14px 28px;
+    background:linear-gradient(90deg,#6c63ff,#00c6ff);
+    color:white;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
+}
+
+button:hover,
+.primary-btn:hover{
+    transform:translateY(-2px);
+}
+
+/* INPUTS + SELECT */
+
+input,
+select{
+    background:#0f172a;
+    color:white;
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:12px;
+    padding:14px 16px;
+    outline:none;
+    font-size:15px;
+}
+
+input:focus,
+select:focus{
+    border-color:#00c6ff;
+    box-shadow:0 0 10px rgba(0,198,255,.25);
+}
+
+option{
+    background:#111827;
+    color:white;
+}
+
+/* CARDS */
+
+.card,
+.panel,
+.result-card,
+.stat-card,
+.summary-card,
+.job-card,
+.saved-card{
+    background:#111936;
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,.25);
+}

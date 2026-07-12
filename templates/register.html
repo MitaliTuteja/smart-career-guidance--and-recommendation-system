@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up | CareerGuide AI</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/register.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+
+<div class="auth-container">
+
+    <div class="left-panel">
+        <div class="logo">
+            <i class="fas fa-brain"></i>
+            CareerGuide AI
+        </div>
+
+        <h1>Create Your Account</h1>
+        <p>Start your AI-powered career guidance journey today.</p>
+    </div>
+
+    <div class="right-panel">
+
+        <div class="form-box">
+
+            <h2>Sign Up</h2>
+
+            <form method="POST" action="{{ url_for('register') }}">
+
+                <label>Full Name</label>
+                <input type="text" name="name" placeholder="Enter Name" required>
+
+                <label>Email Address</label>
+                <input type="email" name="email" placeholder="Enter Email" required>
+
+                <label>Password</label>
+                <div class="password-box">
+                    <input type="password" name="password" id="password" placeholder="Enter Password" required>
+                    <i class="fas fa-eye" id="togglePassword"></i>
+                </div>
+
+                <button type="submit">Create Account</button>
+
+            </form>
+
+            <p class="switch-text">
+                Already have an account?
+                <a href="{{ url_for('login') }}">Login</a>
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/register.js') }}"></script>
+
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Learning Roadmap | CareerGuide AI</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/common.css') }}">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/learning_roadmap.css') }}">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- Sidebar -->
+
+    <div class="sidebar">
+
+        <div class="logo">
+            <i class="fas fa-brain"></i>
+            CareerGuide AI
+        </div>
+
+        <ul>
+
+            <li>
+                <a href="{{ url_for('dashboard') }}">
+                    <i class="fas fa-home"></i>
+                    Dashboard
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('career') }}">
+                    <i class="fas fa-briefcase"></i>
+                    Career Match
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('skill_analysis') }}">
+                    <i class="fas fa-chart-line"></i>
+                    Skill Analysis
+                </a>
+            </li>
+
+            <li class="active">
+                <a href="{{ url_for('learning_roadmap') }}">
+                    <i class="fas fa-road"></i>
+                    Learning Roadmap
+                </a>
+            </li>
+
+            <li>
+            <a href="{{ url_for('resume_analyzer') }}">
+            <i class="fas fa-file-alt"></i> Resume Analyzer
+            </a>
+            </li>
+            <li><i class="fas fa-briefcase"></i><a href="{{ url_for('jobs') }}">Jobs</a></li>
+            <li>
+            <a href="{{ url_for('saved_jobs') }}">
+            <i class="fas fa-bookmark"></i> Saved Jobs
+            </a>
+            </li>
+
+            <li>
+                <i class="fas fa-bookmark"></i>
+                Saved Careers
+            </li>
+            <li>
+                <a href="{{ url_for('ai_assistant') }}">
+                   <i class="fas fa-robot"></i> AI Assistant
+                </a>
+            </li>
+
+            <li>
+                <i class="fas fa-cog"></i>
+                Settings
+            </li>
+
+        </ul>
+
+    </div>
+
+    <!-- Main -->
+
+    <div class="main-content">
+
+        <h1>Learning Roadmap</h1>
+
+        <p>
+            Select your target career and receive a personalized step-by-step learning roadmap.
+        </p>
+
+        <form id="roadmapForm">
+
+            <select id="target_career" required>
+
+                <option value="">Select Target Career</option>
+
+                {% for c in careers %}
+                <option value="{{ c }}">{{ c }}</option>
+                {% endfor %}
+
+            </select>
+
+            <button type="submit">
+
+                Generate Roadmap
+
+            </button>
+
+        </form>
+
+        <div id="roadmapResult"></div>
+
+    </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/learning_roadmap.js') }}"></script>
+
+</body>
+
+</html>

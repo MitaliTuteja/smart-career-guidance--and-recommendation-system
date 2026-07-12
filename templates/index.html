@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Career Guidance System</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header>
+        <nav class="navbar">
+
+            <div class="logo">
+                <i class="fa-solid fa-brain"></i>
+                CareerGuide AI
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Features</a></li>
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+
+            <div class="nav-buttons">
+                
+                <!-- <a href="/login" class="login-btn">Login</a> -->
+                 <a href="{{ url_for('login') }}" class="login-btn">Login</a>
+                <!-- <a href="/register" class="signup-btn">Sign Up</a> -->
+                <a href="{{ url_for('register') }}" class="signup-btn">Sign Up</a>
+                
+            </div>
+
+        </nav>
+    </header>
+
+    <!-- ================= HERO SECTION ================= -->
+
+    <section class="hero">
+
+        <div class="hero-left">
+
+            <span class="badge">
+                AI Powered Career Recommendation Platform
+            </span>
+
+            <h1>
+                Build Your Future With
+                <span>Smart Guidance</span>
+            </h1>
+
+            <p>
+                Discover the most suitable career path based on your
+                skills, interests, educational background, and career
+                aspirations using Artificial Intelligence and Machine Learning.
+            </p>
+
+            <div class="hero-buttons">
+
+                <button class="primary-btn">
+                    Get Started
+                </button>
+
+                <button class="secondary-btn">
+                    Explore Features
+                </button>
+
+            </div>
+
+            <div class="stats">
+
+                <div class="stat-box">
+                    <h2>10K+</h2>
+                    <p>Career Profiles</p>
+                </div>
+
+                <div class="stat-box">
+                    <h2>90.21%</h2>
+                    <p>Prediction Accuracy</p>
+                </div>
+
+                <div class="stat-box">
+                    <h2>5K+</h2>
+                    <p>Students Guided</p>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="hero-right">
+
+            <div class="brain-container">
+
+                <!-- <img src="ChatGPT Image Jun 29, 2026, 12_12_37 PM.png"
+                alt="AI Brain"
+                class="brain-image"> -->
+
+                
+                <img src="{{ url_for('static', filename='images/brain.png') }}" alt="AI Brain" class="brain-image">
+    
+                 
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ================= FEATURES ================= -->
+
+    <section class="features">
+
+        <div class="section-title">
+            <h2>Powerful Features</h2>
+            <p>
+                Everything you need to make informed career decisions.
+            </p>
+        </div>
+
+        <div class="feature-grid">
+
+            <div class="feature-card">
+
+                <div class="icon">
+                    <i class="fa-solid fa-user-graduate"></i>
+                </div>
+
+                <h3>Career Recommendation</h3>
+
+                <p>
+                    Personalized career suggestions using machine learning.
+                </p>
+
+            </div>
+
+            <div class="feature-card">
+
+                <div class="icon">
+                    <i class="fa-solid fa-chart-line"></i>
+                </div>
+
+                <h3>Skill Gap Analysis</h3>
+
+                <p>
+                    Identify missing skills required for your dream career.
+                </p>
+
+            </div>
+
+            <div class="feature-card">
+
+                <div class="icon">
+                    <i class="fa-solid fa-road"></i>
+                </div>
+
+                <h3>Learning Roadmap</h3>
+
+                <p>
+                    Receive a step-by-step roadmap to achieve career goals.
+                </p>
+
+            </div>
+
+            <div class="feature-card">
+
+                <div class="icon">
+                    <i class="fa-solid fa-file"></i>
+                </div>
+
+                <h3>Resume Analyzer</h3>
+
+                <p>
+                    Analyze resumes and get personalized improvement tips.
+                </p>
+
+            </div>
+
+            <div class="feature-card">
+
+                <div class="icon">
+                    <i class="fa-solid fa-briefcase"></i>
+                </div>
+
+                <h3>Job Recommendation</h3>
+
+                <p>
+                    Discover suitable job opportunities aligned with your skills.
+                </p>
+
+            </div>
+
+            <div class="feature-card">
+
+                <div class="icon">
+                    <i class="fa-solid fa-robot"></i>
+                </div>
+
+                <h3>AI Assistance</h3>
+
+                <p>
+                    Smart AI guidance for career planning and growth.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ================= ABOUT ================= -->
+
+    <section class="about">
+
+        <div class="about-content">
+
+            <div class="about-left">
+
+                <h2>
+                    Why Choose Our Smart Career Guidance System?
+                </h2>
+
+                <p>
+                    Our AI-driven platform helps students and professionals
+                    make data-driven career decisions. By analyzing skills,
+                    interests, educational qualifications, and industry
+                    trends, the system recommends the most suitable career
+                    paths and learning opportunities.
+                </p>
+
+            </div>
+
+            <div class="about-right">
+
+                <div class="about-card">
+                    <h3>AI Powered</h3>
+                    <p>Uses Random Forest and XGBoost models.</p>
+                </div>
+
+                <div class="about-card">
+                    <h3>Personalized</h3>
+                    <p>Recommendations tailored to each user.</p>
+                </div>
+
+                <div class="about-card">
+                    <h3>Reliable</h3>
+                    <p>Achieved 90.21% prediction accuracy.</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ================= CTA ================= -->
+
+    <section class="cta">
+
+        <h2>Ready To Discover Your Ideal Career?</h2>
+
+        <p>
+            Start your journey today with AI-powered career guidance.
+        </p>
+
+        <button class="primary-btn">
+            Start Assessment
+        </button>
+
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <div class="footer-content">
+
+            <div class="footer-logo">
+                <i class="fa-solid fa-brain"></i>
+                CareerGuide AI
+            </div>
+
+            <p>
+                Smart Career Guidance and Recommendation System
+                powered by Artificial Intelligence.
+            </p>
+
+            <div class="social-icons">
+
+                <i class="fab fa-facebook"></i>
+                <i class="fab fa-linkedin"></i>
+                <i class="fab fa-github"></i>
+                <i class="fab fa-instagram"></i>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+    
+    <script src="{{ url_for('static', filename='js/home.js') }}"></script>
+
+
+
+</body>
+</html>

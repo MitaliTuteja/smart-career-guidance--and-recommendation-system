@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login - CareerGuide AI</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="login-container">
+
+    <!-- Left Side -->
+
+    <div class="left-panel">
+
+        <div class="logo">
+            <i class="fas fa-brain"></i>
+            CareerGuide AI
+        </div>
+
+        <h1>Welcome Back!</h1>
+
+        <p>
+            Login to continue your career journey
+            with AI-powered guidance.
+        </p>
+
+        <!-- <img src="ChatGPT Image Jun 29, 2026, 01_00_04 PM.png" alt="AI Brain"> -->
+
+    </div>
+
+    <!-- Right Side -->
+
+    <div class="right-panel">
+
+        <div class="form-box">
+
+            <h2>Login</h2>
+
+            <!-- <form id="loginForm">
+
+                <label>Email Address</label>
+                <input type="email"
+                 id="email"
+                placeholder="Enter Email">
+
+                <label>Password</label>
+
+                <div class="password-box">
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Enter Password">
+
+                <i class="fa-solid fa-eye" id="togglePassword"></i>
+
+                </div>
+
+                <a href="#" class="forgot">
+                    Forgot Password?
+                </a>
+
+                <button type="submit" id="loginBtn">
+                    Login
+                </button>
+
+            </form> -->
+
+
+            <form id="loginForm" method="POST" action="/login">
+
+    <label>Email Address</label>
+    <input type="email" name="email" id="email" placeholder="Enter Email" required>
+
+    <label>Password</label>
+
+    <div class="password-box">
+        <input type="password" name="password" id="password" placeholder="Enter Password" required>
+        <i class="fa-solid fa-eye" id="togglePassword"></i>
+    </div>
+
+    <button type="submit" id="loginBtn">
+        Login
+    </button>
+
+</form>
+
+            <div class="divider">
+                OR CONTINUE WITH
+            </div>
+
+            <div class="social-login">
+
+                <button>
+                    <i class="fab fa-google"></i>
+                    Google
+                </button>
+
+                <button>
+                    <i class="fab fa-github"></i>
+                    GitHub
+                </button>
+
+            </div>
+
+            <p class="signup">
+                Don't have an account?
+                <!-- <a href="#">Sign Up</a> -->
+                <a href="{{ url_for('register') }}">Sign Up</a>
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/login.js') }}"></script>
+
+</body>
+</html>

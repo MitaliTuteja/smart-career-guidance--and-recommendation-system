@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Career Recommendations</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/common.css') }}">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/career.css') }}">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+
+        <div class="logo">
+            <i class="fas fa-brain"></i>
+            CareerGuide AI
+        </div>
+
+        <ul>
+            <li><i class="fas fa-home"></i> Dashboard</li>
+            <li><i class="fas fa-user"></i> Profile</li>
+            <li class="active"><i class="fas fa-briefcase"></i> Career Match</li>
+            <li>
+            <a href="{{ url_for('skill_analysis') }}">
+            <i class="fas fa-chart-line"></i> Skill Analysis
+            </a>
+            </li>
+            <li>
+            <a href="{{ url_for('learning_roadmap') }}">
+            <i class="fas fa-road"></i> Learning Roadmap
+            </a>
+            </li>
+            <li>
+            <a href="{{ url_for('resume_analyzer') }}">
+            <i class="fas fa-file-alt"></i> Resume Analyzer
+            </a>
+            </li>
+            <li><i class="fas fa-briefcase"></i><a href="{{ url_for('jobs') }}">Jobs</a></li>
+            <li>
+            <a href="{{ url_for('saved_jobs') }}">
+            <i class="fas fa-bookmark"></i> Saved Jobs
+            </a>
+            </li>
+            <li>
+            <a href="{{ url_for('saved_careers') }}">
+            <i class="fas fa-bookmark"></i> Saved Careers
+            </a>
+            </li>
+            <li>
+            <a href="{{ url_for('ai_assistant') }}">
+               <i class="fas fa-robot"></i> AI Assistant
+            </a>
+            </li>
+            <li><i class="fas fa-cog"></i> Settings</li>
+        </ul>
+
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-content">
+
+        <h1>Best Career Matches For You</h1>
+        <p>Based on your skills, interests and career profile</p>
+
+        <div class="model-badge">
+            🤖 Powered by <strong>XGBoost Machine Learning</strong> • Accuracy <strong>97.25%</strong>
+        </div>
+
+        <!-- ================= USER INPUT FORM ================= -->
+        <div class="input-section">
+
+        <form id="careerForm">
+
+    <input type="number" id="academic_score" placeholder="Academic Score" min="0" max="100" required>
+
+    <select id="stream" required>
+    <option value="">Select Stream</option>
+    {% for s in streams %}
+        <option value="{{ s }}">{{ s }}</option>
+    {% endfor %}
+    </select>
+
+    <select id="technical_skill" required>
+    <option value="">Select Technical Skill</option>
+    {% for t in technical_skills %}
+        <option value="{{ t }}">{{ t }}</option>
+    {% endfor %}
+    </select>
+
+    <select id="soft_skill" required>
+    <option value="">Select Soft Skill</option>
+    {% for s in soft_skills %}
+        <option value="{{ s }}">{{ s }}</option>
+    {% endfor %}
+    </select>
+
+    <select id="personality" required>
+    <option value="">Select Personality</option>
+    {% for p in personalities %}
+        <option value="{{ p }}">{{ p }}</option>
+    {% endfor %}
+    </select>
+
+    <select id="interest" required>
+    <option value="">Select Interest</option>
+    {% for i in interests %}
+        <option value="{{ i }}">{{ i }}</option>
+    {% endfor %}
+    </select>
+
+    <select id="work_style" required>
+    <option value="">Select Work Style</option>
+    {% for w in work_styles %}
+        <option value="{{ w }}">{{ w }}</option>
+    {% endfor %}
+    </select>
+
+    <button type="submit">Get Recommendations</button>
+
+</form>
+
+        <!-- ================= RESULTS SECTION ================= -->
+
+        <div class="results">
+
+            <h2>Top Career Recommendations</h2>
+
+            <div id="recommendationCards" class="recommendation-cards">
+
+                <!-- JS / Flask will inject cards here -->
+
+                <div class="card">
+                    <span class="match">--%</span>
+                    <h3>Waiting for input...</h3>
+                    <p>Submit details to get AI recommendations</p>
+                </div>
+
+            </div>
+        </div>
+
+        
+
+    </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/career.js') }}"></script>
+
+</body>
+</html>

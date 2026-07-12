@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <title>Resume Analyzer | CareerGuide AI</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/common.css') }}">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/resume_analyzer.css') }}">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- Sidebar -->
+
+    <div class="sidebar">
+
+        <div class="logo">
+            <i class="fas fa-brain"></i>
+            <span>CareerGuide AI</span>
+        </div>
+
+        <ul>
+
+            <li><a href="/dashboard"><i class="fas fa-home"></i> Dashboard</a></li>
+
+            <li><a href="/career"><i class="fas fa-briefcase"></i> Career Match</a></li>
+
+            <li><a href="/skill-analysis"><i class="fas fa-chart-line"></i> Skill Analysis</a></li>
+
+            <li><a href="/learning-roadmap"><i class="fas fa-road"></i> Learning Roadmap</a></li>
+
+            <li class="active"><a href="/resume-analyzer"><i class="fas fa-file-alt"></i> Resume Analyzer</a></li>
+
+            <li><i class="fas fa-briefcase"></i><a href="{{ url_for('jobs') }}">Jobs</a></li>
+            <li>
+            <a href="{{ url_for('saved_jobs') }}">
+            <i class="fas fa-bookmark"></i> Saved Jobs
+            </a>
+            </li>
+            <li><a href="/saved-careers"><i class="fas fa-bookmark"></i> Saved Careers</a></li>
+            <li>
+                <a href="{{ url_for('ai_assistant') }}">
+                   <i class="fas fa-robot"></i> AI Assistant
+                </a>
+            </li>
+
+            <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+
+        </ul>
+
+    </div>
+
+    <!-- Main -->
+
+    <div class="main-content">
+
+        <h1>AI Resume Analyzer</h1>
+
+        <p>
+            Upload your resume and receive AI-powered feedback.
+        </p>
+
+        <div class="resume-badge">
+           🤖 NLP + ML Powered Resume Screening
+        </div>
+
+        <!-- Upload -->
+
+        <div class="upload-card">
+
+            <h2>Upload Resume</h2>
+
+            <p>Supported Format: PDF, DOCX</p>
+
+            <form id="resumeForm">
+
+                <input
+                    type="file"
+                    id="resumeFile"
+                    accept=".pdf,.doc,.docx"
+                >
+
+                <div id="uploadStatus" class="upload-status"></div>
+
+                <button type="submit" id="analyzeBtn">
+                    Analyze Resume
+                </button>
+
+            </form>
+
+        </div>
+
+        <!-- Results -->
+
+        <div id="resumeResult"></div>
+
+    </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/resume_analyzer.js') }}"></script>
+
+</body>
+</html>

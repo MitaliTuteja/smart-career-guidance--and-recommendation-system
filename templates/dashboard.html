@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | CareerGuide AI</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/common.css') }}">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="sidebar">
+
+        <div class="logo">
+            <i class="fas fa-brain"></i>
+            CareerGuide AI
+        </div>
+
+        <ul>
+            <li class="active"><i class="fas fa-home"></i> Dashboard</li>
+            <li><i class="fas fa-user"></i> Profile</li>
+
+            <li>
+                <a href="{{ url_for('career') }}">
+                    <i class="fas fa-briefcase"></i> Career Match
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('skill_analysis') }}">
+                    <i class="fas fa-chart-line"></i> Skill Analysis
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('learning_roadmap') }}">
+                    <i class="fas fa-road"></i> Learning Roadmap
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('resume_analyzer') }}">
+                    <i class="fas fa-file-alt"></i> Resume Analyzer
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('jobs') }}">
+                    <i class="fas fa-briefcase"></i> Jobs
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('saved_jobs') }}">
+                    <i class="fas fa-bookmark"></i> Saved Jobs
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('saved_careers') }}">
+                    <i class="fas fa-bookmark"></i> Saved Careers
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for('ai_assistant') }}">
+                    <i class="fas fa-robot"></i> AI Assistant
+                </a>
+            </li>
+
+            <li><i class="fas fa-cog"></i> Settings</li>
+        </ul>
+
+    </div>
+
+    <div class="main-content">
+
+        <div class="header">
+
+            <div>
+                <h2>Welcome Back, {{ name }} 👋</h2>
+                <p>Continue building your future career.</p>
+            </div>
+
+            <a href="{{ url_for('logout') }}">
+                <button class="logout-btn">Logout</button>
+            </a>
+
+        </div>
+
+        <div class="stats">
+
+            <div class="card">
+                <h3 id="dashCareer">--</h3>
+                <p>Career Prediction</p>
+            </div>
+
+            <div class="card">
+                <h3 id="dashATS">--%</h3>
+                <p>Resume ATS</p>
+            </div>
+
+            <div class="card">
+                <h3 id="dashSkill">--%</h3>
+                <p>Skill Match</p>
+            </div>
+
+            <div class="card">
+                <h3 id="dashJobs">--</h3>
+                <p>Saved Jobs</p>
+            </div>
+
+        </div>
+
+        <div class="dashboard-grid">
+
+            <div class="panel">
+                <h3>Latest Career Prediction</h3>
+
+                <div class="career">
+                    <span id="latestCareer">Not Predicted Yet</span>
+                    <span>ML Powered</span>
+                </div>
+
+                <p class="panel-note">
+                    Generated using trained XGBoost career recommendation model.
+                </p>
+            </div>
+
+            <div class="panel">
+                <h3>Resume ATS Score</h3>
+
+                <div class="chart-circle" id="latestATS">
+                    --%
+                </div>
+
+                <p>Latest Resume Analysis</p>
+            </div>
+
+            <div class="panel">
+                <h3>Skill Match Summary</h3>
+
+                <div class="chart-circle" id="latestSkill">
+                    --%
+                </div>
+
+                <p>Latest Skill Gap Result</p>
+            </div>
+
+            <div class="panel">
+                <h3>Saved Jobs</h3>
+
+                <div class="chart-circle" id="latestJobs">
+                    0
+                </div>
+
+                <p>Total saved job recommendations.</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+
+</body>
+</html>

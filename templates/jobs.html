@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Job Recommendations | CareerGuide AI</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/common.css') }}">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/jobs.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="sidebar">
+        <div class="logo">
+            <i class="fas fa-brain"></i>
+            CareerGuide AI
+        </div>
+
+        <ul>
+
+    <li>
+        <a href="{{ url_for('dashboard') }}">
+            <i class="fas fa-home"></i> Dashboard
+        </a>
+    </li>
+
+    <li>
+        <a href="{{ url_for('career') }}">
+            <i class="fas fa-briefcase"></i> Career Match
+        </a>
+    </li>
+
+    <li>
+        <a href="{{ url_for('skill_analysis') }}">
+            <i class="fas fa-chart-line"></i> Skill Analysis
+        </a>
+    </li>
+
+    <li>
+        <a href="{{ url_for('learning_roadmap') }}">
+            <i class="fas fa-road"></i> Learning Roadmap
+        </a>
+    </li>
+
+    <li>
+        <a href="{{ url_for('resume_analyzer') }}">
+            <i class="fas fa-file-alt"></i> Resume Analyzer
+        </a>
+    </li>
+
+    <li class="active">
+        <a href="{{ url_for('jobs') }}">
+            <i class="fas fa-briefcase"></i> Jobs
+        </a>
+    </li>
+
+    <li>
+        <a href="{{ url_for('saved_jobs') }}">
+            <i class="fas fa-bookmark"></i> Saved Jobs
+        </a>
+    </li>
+
+    <li>
+        <a href="{{ url_for('saved_careers') }}">
+            <i class="fas fa-heart"></i> Saved Careers
+        </a>
+    </li>
+
+    <li>
+        <a href="{{ url_for('ai_assistant') }}">
+            <i class="fas fa-robot"></i> AI Assistant
+        </a>
+    </li>
+
+    <li>
+        <a href="#">
+            <i class="fas fa-cog"></i> Settings
+        </a>
+    </li>
+
+</ul>
+    </div>
+
+    <div class="main-content">
+
+        <h1>Job Recommendations</h1>
+        <p>Find job roles that match your predicted career path and skill profile.</p>
+
+        <form id="jobForm">
+            <select id="target_career" required>
+                <option value="">Select Career Domain</option>
+                {% for c in careers %}
+                    <option value="{{ c }}">{{ c }}</option>
+                {% endfor %}
+            </select>
+
+            <button type="submit">Find Jobs</button>
+        </form>
+
+        <div id="jobsResult" class="jobs-grid"></div>
+
+    </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/jobs.js') }}"></script>
+
+</body>
+</html>
