@@ -1,13 +1,17 @@
 from flask import Flask, render_template, request, redirect, url_for, session, jsonify
-import json
-import pandas as pd
-import pickle
+
 import os
+import pickle
+import pandas as pd
+import psycopg2
+
 from docx import Document
 from PyPDF2 import PdfReader
-from werkzeug.utils import secure_filename
 from dotenv import load_dotenv
 from google import genai
+from psycopg2.extras import RealDictCursor
+from werkzeug.security import generate_password_hash, check_password_hash
+from werkzeug.utils import secure_filename
 
 
 # =========================
@@ -17,54 +21,94 @@ from google import genai
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 UPLOAD_FOLDER = os.path.join(BASE_DIR, "uploads")
-USERS_FILE = os.path.join(BASE_DIR, "users.json")
+
+
+# =========================
+# ENVIRONMENT CONFIGURATION
+# =========================
+
+load_dotenv()
+
+DATABASE_URL = os.getenv("DATABASE_URL")
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+FLASK_SECRET_KEY = os.getenv(
+    "FLASK_SECRET_KEY",
+    "temporary-development-secret-key"
+)
 
 
 # =========================
 # FLASK APP CONFIGURATION
 # =========================
 
-load_dotenv()
-
 app = Flask(__name__)
 
-app.secret_key = os.getenv(
-    "FLASK_SECRET_KEY",
-    "temporary-development-secret-key"
-)
+app.secret_key = FLASK_SECRET_KEY
 
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
-
 
 # =========================
 # GEMINI CONFIGURATION
 # =========================
 
-gemini_api_key = os.getenv("GEMINI_API_KEY")
+if not GEMINI_API_KEY:
+    print("Warning: GEMINI_API_KEY is missing.")
 
-if not gemini_api_key:
-    print("Warning: GEMINI_API_KEY is missing from the .env file.")
-
-gemini_client = genai.Client(api_key=gemini_api_key)
+gemini_client = genai.Client(api_key=GEMINI_API_KEY)
 
 
 # =========================
-# USER FILE FUNCTIONS
+# POSTGRESQL DATABASE
 # =========================
 
-def load_users():
+def get_db_connection():
+    if not DATABASE_URL:
+        raise RuntimeError(
+            "DATABASE_URL environment variable is missing."
+        )
+
+    return psycopg2.connect(
+        DATABASE_URL,
+        cursor_factory=RealDictCursor
+    )
+
+
+def create_users_table():
+    connection = get_db_connection()
+
     try:
-        with open(USERS_FILE, "r", encoding="utf-8") as file:
-            return json.load(file)
+        with connection.cursor() as cursor:
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS users (
+                    id SERIAL PRIMARY KEY,
+                    name VARCHAR(100) NOT NULL,
+                    email VARCHAR(255) UNIQUE NOT NULL,
+                    password_hash TEXT NOT NULL,
+                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                )
+            """)
 
-    except (FileNotFoundError, json.JSONDecodeError):
-        return {}
+        connection.commit()
+
+    finally:
+        connection.close()
 
 
-def save_users(users):
-    with open(USERS_FILE, "w", encoding="utf-8") as file:
-        json.dump(users, file, indent=4)
+# =========================
+# CREATE TABLE ON STARTUP
+# =========================
+
+if DATABASE_URL:
+    try:
+        create_users_table()
+        print("PostgreSQL users table is ready.")
+
+    except Exception as error:
+        print("PostgreSQL initialization error:", error)
+
+else:
+    print("Warning: DATABASE_URL is not configured.")
 
 
 # =========================
@@ -73,25 +117,25 @@ def save_users(users):
 
 def extract_text_from_docx(file_path):
     document = Document(file_path)
-    text = ""
+    text_parts = []
 
     for paragraph in document.paragraphs:
-        text += paragraph.text + " "
+        text_parts.append(paragraph.text)
 
-    return text.lower()
+    return " ".join(text_parts).lower()
 
 
 def extract_text_from_pdf(file_path):
     reader = PdfReader(file_path)
-    text = ""
+    text_parts = []
 
     for page in reader.pages:
         page_text = page.extract_text()
 
         if page_text:
-            text += page_text + " "
+            text_parts.append(page_text)
 
-    return text.lower()
+    return " ".join(text_parts).lower()
 
 
 # =========================
@@ -110,44 +154,84 @@ def home():
 @app.route('/register', methods=["GET", "POST"])
 def register():
     if request.method == "POST":
-        name = request.form["name"]
-        email = request.form["email"]
+        name = request.form["name"].strip()
+        email = request.form["email"].strip().lower()
         password = request.form["password"]
 
-        users = load_users()
+        password_hash = generate_password_hash(password)
 
-        if email in users:
-            return "User already exists"
+        connection = get_db_connection()
 
-        users[email] = {
-            "name": name,
-            "password": password
-        }
+        try:
+            with connection.cursor() as cursor:
+                cursor.execute(
+                    "SELECT id FROM users WHERE email = %s",
+                    (email,)
+                )
 
-        save_users(users)
+                existing_user = cursor.fetchone()
+
+                if existing_user:
+                    return "User already exists"
+
+                cursor.execute(
+                    """
+                    INSERT INTO users (name, email, password_hash)
+                    VALUES (%s, %s, %s)
+                    """,
+                    (name, email, password_hash)
+                )
+
+            connection.commit()
+
+        except Exception as error:
+            connection.rollback()
+            print("Registration error:", error)
+            return "Registration failed. Please try again."
+
+        finally:
+            connection.close()
 
         return redirect(url_for("login"))
 
     return render_template("register.html")
 
+
 # LOGIN
 @app.route('/login', methods=["GET", "POST"])
 def login():
     if request.method == "POST":
-        email = request.form["email"]
+        email = request.form["email"].strip().lower()
         password = request.form["password"]
 
-        print("LOGIN ATTEMPT:", email, password)
+        connection = get_db_connection()
 
-        users = load_users()
-        print("USERS:", users)
+        try:
+            with connection.cursor() as cursor:
+                cursor.execute(
+                    """
+                    SELECT id, name, email, password_hash
+                    FROM users
+                    WHERE email = %s
+                    """,
+                    (email,)
+                )
 
-        if email in users and users[email]["password"] == password:
-            print("LOGIN SUCCESS")
-            session["user"] = users[email]["name"]
+                user = cursor.fetchone()
+
+        except Exception as error:
+            print("Login error:", error)
+            return "Login failed. Please try again."
+
+        finally:
+            connection.close()
+
+        if user and check_password_hash(user["password_hash"], password):
+            session["user"] = user["name"]
+            session["user_id"] = user["id"]
+
             return redirect(url_for("dashboard"))
 
-        print("LOGIN FAILED")
         return "Invalid Credentials"
 
     return render_template("login.html")
