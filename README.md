@@ -3,7 +3,6 @@
 An AI-powered web application that provides personalized career recommendations based on a student's academic background, skills, personality, interests, and work style. The system uses Machine Learning to help students make informed career decisions and identify skill gaps.
 
 🌐 **Live Demo:** https://career-guide-ai-mitali.onrender.com
-*(Replace this with your actual Render URL if different.)*
 
 ---
 
@@ -21,8 +20,10 @@ The system analyzes multiple factors such as academic score, technical skills, s
 - 🎯 AI-Based Career Recommendations
 - 📊 Skill Gap Analysis
 - 📚 Personalized Learning Roadmap
-- 📈 Interactive Dashboard
-- 🤖 Machine Learning-Based Prediction
+- 📄 Resume Analyzer
+- 📈 ATS Resume Score
+- 💼 Job Recommendation System
+- 🤖 AI Career Chatbot
 - 📱 Responsive User Interface
 - ☁️ Deployed on Render
 
@@ -59,13 +60,12 @@ The system analyzes multiple factors such as academic score, technical skills, s
 
 ## 🧠 Machine Learning Models
 
-The project evaluates multiple Machine Learning algorithms and uses the most suitable model for career prediction.
+The system uses Machine Learning to generate personalized career recommendations. The final implementation is based on the following algorithms:
 
-- Random Forest
-- XGBoost
-- Decision Tree
-- Logistic Regression
-- K-Nearest Neighbors (KNN)
+- 🌲 Random Forest
+- 🚀 XGBoost
+
+These models were trained and evaluated to provide accurate career recommendations based on students' academic background, skills, personality, interests, and work style.
 
 ---
 
@@ -140,25 +140,24 @@ python app.py
 
 ## 📸 Project Screenshots
 
-- Home Page
-- Login & Registration
-- Dashboard
-- Career Recommendation
-- Skill Gap Analysis
-- Learning Roadmap
+- 🏠 Home Page
+- 🔐 Login & Registration
+- 📊 Dashboard
+- 🎯 Career Recommendation
+- 📈 Skill Gap Analysis
+- 🗺️ Learning Roadmap
 
-*(Screenshots can be added here later.)*
 
 ---
 
 ## 🔮 Future Enhancements
 
-- Resume Analyzer
-- ATS Resume Score
-- Job Recommendation System
-- Career Chatbot
-- AI-based Interview Preparation
-- Course Recommendation Engine
+- 📱 Mobile Application
+- 🌍 Multi-language Support
+- 📊 Advanced Analytics Dashboard
+- 🎙️ Voice-Based Career Assistant
+- 🔗 Integration with Learning Platforms
+- 📧 Email Notifications and Progress Tracking
 
 ---
 
